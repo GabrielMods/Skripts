@@ -43,20 +43,27 @@ options:
 #                                                              [AUTO-UPDATE]			   											  #
 #=====================================================================================================================================#
 
-on load:	
-	if {_x} isn't set:		
-		execute console command "x2"		
+on load:    
+	if {_x} isn't set:                
+		set {_x2} to result of connect to "https://raw.githubusercontent.com/GabrielMods/Skripts/master/shop.sk"                
+		if {_x3} is {_x2}:                    
+			delete {_x2}                    
+			stop                        
+		download "https://raw.githubusercontent.com/GabrielMods/Skripts/master/shop.sk" to "plugins/Skript/scripts/%script%"            
+		set {_x3} to {_x2}            
+		delete {_x}            
+		delete {_x2}            
 		set {_x} to false
 		
 command /update:	
 	permission: update.*	
 	trigger:					
 		if {_x} isn't set:				
-			set {_x2} to result of connect to "Link RAW do pliku, zawierajacym informacje o najnowszej wersji"				
+			set {_x2} to result of connect to "https://raw.githubusercontent.com/GabrielMods/Skripts/master/shop.sk"				
 			if {_x3} is {_x2}:					
 				delete {_x2}					
 				stop						
-			download "Link RAW do twojego skryptu" to "plugins/Skript/scripts/%script%"			
+			download "https://raw.githubusercontent.com/GabrielMods/Skripts/master/shop.sk" to "plugins/Skript/scripts/%script%"			
 			set {_x3} to {_x2}			
 			delete {_x}			
 			delete {_x2}
