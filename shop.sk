@@ -1,9 +1,9 @@
-#Beta Pre5.1#
+#Beta Pre5.3#
 
 #===============================================#
 #==== Skrypt zrobiony przez: GabrielMods_Ga ====#
 #====										====#
-#==== Wersja: Pre5.1                        ====#
+#==== Wersja: Pre5.3                        ====#
 #====									    ====#
 #==== Prawa do przerobienia: Zastrzeżone    ====#
 #====									    ====#
@@ -83,12 +83,3 @@ on sign change:
 					set {shop.cost.%event-block%} to "%line 3%"
 					set {shop.owner.%event-block%} to "%line 4%"
 					set {shop.active.%event-block%} to false 
-
-on rightclick on sign:
-	if {shop.active.%event-block%} is true:
-		if {shop.owner.%event-block%} is %player%:
-			
-		else:
-			
-	else:
-		send "{@prefix}&cSklep nieczynny z powodu awarji lub braku surowców!"
