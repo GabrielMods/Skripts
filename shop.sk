@@ -1,0 +1,87 @@
+#Beta Pre5.1#
+
+#===============================================#
+#==== Skrypt zrobiony przez: GabrielMods_Ga ====#
+#====										====#
+#==== Wersja: Pre5.1                        ====#
+#====									    ====#
+#==== Prawa do przerobienia: Zastrzeżone    ====#
+#====									    ====#
+#==== Proźba od autora:					    ====#
+#==== 									    ====#
+#==== Jeżeli używasz tego skryptu na 		====#
+#==== serwerze to proszę o nieusuwanie      ====#
+#==== informacji na temat autora.			====#
+#===============================================#
+
+#=====================================================================================================================================#
+#                                                             [USTAWIENIA]															  #
+#=====================================================================================================================================#
+
+options:
+	#Ustawienia Autora
+	prefix: &5[&a&lSign&9&lShop&5] &r #nazwa wyświetlana
+	owner: &cGabrielMods_Ga #stwórca skryptu
+	version: &5&lPre5.1 #wersja
+	website: http://damcraft.svpj.pl/Admin/GabrielMods_Ga.php #link do strony
+	
+	#Ustawienia ilościowe
+	MaxSell: 5000 #maksymalna cena sprzedaży
+	
+	#Ustawienia ogólne
+	
+	max-stack: 2000 #ile maksymalnie może pomieścić tabliczka
+	min-stack: 0 #ile minimalnie może być przedmiotów w tabliczce
+	
+
+#===========================================
+#==== Jeżeli nieznasz się na skryptach =====
+#==== to nic tutaj nie zmieniaj! 	   =====
+#===========================================
+
+#=====================================================================================================================================#
+#                                                              [AUTO-UPDATE]			   											  #
+#=====================================================================================================================================#
+
+on load:	
+	if {_x} isn't set:		
+		execute console command "x2"		
+		set {_x} to false
+		
+command /update:	
+	permission: update.*	
+	trigger:					
+		if {_x} isn't set:				
+			set {_x2} to result of connect to "Link RAW do pliku, zawierajacym informacje o najnowszej wersji"				
+			if {_x3} is {_x2}:					
+				delete {_x2}					
+				stop						
+			download "Link RAW do twojego skryptu" to "plugins/Skript/scripts/%script%"			
+			set {_x3} to {_x2}			
+			delete {_x}			
+			delete {_x2}
+#=====================================================================================================================================#
+#                                                              [SKRYPTY]			   												  #
+#=====================================================================================================================================#
+on sign change:
+	if line 1 is "[Buy]" or "[buy]" or "[sklep kup]" or "[sb]":
+		if line 2 is set:
+			if line 3 is set:
+				if line 4 is set:					
+					set line 1 to "&a&l[Sklep Kup]"
+					set line 2 to "&7&l%line 2%"
+					set line 3 to "&b&l%line 3%"
+					set line 4 to "%player%"
+					set {shop.how-many.%event-block%} to "%line 2%"
+					set {shop.cost.%event-block%} to "%line 3%"
+					set {shop.owner.%event-block%} to "%line 4%"
+					set {shop.active.%event-block%} to false 
+
+on rightclick on sign:
+	if {shop.active.%event-block%} is true:
+		if {shop.owner.%event-block%} is %player%:
+			
+		else:
+			
+	else:
+		send "{@prefix}&cSklep nieczynny z powodu awarji lub braku surowców!"
