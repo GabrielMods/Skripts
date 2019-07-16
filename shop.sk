@@ -1,9 +1,9 @@
-#Beta Pre5.3#
+#PreAlpha 5.3#
 
 #===============================================#
 #==== Skrypt zrobiony przez: GabrielMods_Ga ====#
 #====										====#
-#==== Wersja: Pre5.3                        ====#
+#==== Wersja: PreAlpha 5.3                        ====#
 #====									    ====#
 #==== Prawa do przerobienia: Zastrzeżone    ====#
 #====									    ====#
@@ -49,7 +49,7 @@ on load:
 		if {_x3} is {_x2}:                    
 			delete {_x2}                    
 			stop                        
-		download "https://raw.githubusercontent.com/GabrielMods/Skripts/master/shop.sk" to "plugins/Skript/scripts/%script%"            
+		download "https://raw.githubusercontent.com/GabrielMods/Skripts/master/shop.sk" to "plugins/Skript/scripts/%script%.sk"            
 		set {_x3} to {_x2}            
 		delete {_x}            
 		delete {_x2}            
